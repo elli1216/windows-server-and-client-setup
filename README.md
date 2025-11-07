@@ -71,7 +71,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 1. In Server Manager, click the flag (notification icon).
 2. Select Promote this server to a domain controller.
 3. Choose Add a new forest.
-4. Enter Root Domain Name: JDVP.org.
+4. Enter Root Domain Name: e.g. JDVP.org.
 5. Set Directory Services Restore Mode (DSRM) password: Css@1234.
 6. Continue through default settings → click Install.
 7. Wait for automatic restart.
@@ -126,7 +126,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 ```console
 1. Open Group Policy Management (Tools → GPMC).
 2. Right-click domain JDVP.org → Create a GPO in this domain.
-   Name it: CSS Department.
+   Name it: CSS Department or any name you want.
 3. Right-click CSS Department → Edit.
 4. Navigate to:
    User Configuration → Policies → Windows Settings → Folder Redirection.
@@ -227,7 +227,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 
 ```console
 1. On Server, prepare a shared folder with a wallpaper image (e.g., \\SERVER\Shared\wallpaper.jpg).
-2. Open Group Policy Management → Edit CSS Department.
+2. Open Group Policy Management → Edit CSS Department. (or your name of your group)
 3. Navigate to:
    User Configuration → Administrative Templates → Desktop → Desktop.
 4. Double-click “Desktop Wallpaper”.
@@ -250,7 +250,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 4. On the server, open or create a shared software distribution folder:
    Example: D:\Software\ChromeInstaller\
    Place the Chrome .msi file there.
-5. Open Group Policy Management → Edit CSS Department GPO.
+5. Open Group Policy Management → Edit CSS Department GPO (or your name of group).
 6. Navigate to:
    Computer Configuration → Policies → Software Settings → Software Installation.
 7. Right-click Software Installation → New → Package.
