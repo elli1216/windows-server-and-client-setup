@@ -250,11 +250,12 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 4. On the server, open or create a shared software distribution folder:
    Example: D:\Software\ChromeInstaller\
    Place the Chrome .msi file there.
+5. Go to Security Tab then click Edit > Add > Domain Computers.
 5. Open Group Policy Management → Edit CSS Department GPO (or your name of group).
 6. Navigate to:
    Computer Configuration → Policies → Software Settings → Software Installation.
 7. Right-click Software Installation → New → Package.
-8. In the dialog, enter the full UNC path to the shared MSI file:
+8. In the dialog, enter the full UNC path to the shared MSI file or select Network the find the file:
    \\SERVER\Software\ChromeInstaller\GoogleChromeStandaloneEnterprise64.msi
 9. Select “Assigned” as the deployment method and click OK.
 10. Close the Group Policy Editor and run on the client:
