@@ -6,7 +6,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 - Backup and Restore  
 - Remote Desktop Configuration  
 - Wallpaper Policy Deployment  
-- Google Chrome Policy Management  
+- Google Chrome Enterprise Deployment  
 
 ---
 
@@ -240,22 +240,26 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 
 ---
 
-## 12. Google Chrome Policy Configuration
+## 12. Google Chrome Enterprise Deployment Policy
 
 ```console
-1. Download Google Chrome ADM/ADMX templates:
-   https://support.google.com/chrome/a/answer/187202
-2. Copy policy templates to:
-   C:\Windows\PolicyDefinitions\
-3. Open Group Policy Management → Edit CSS Department.
-4. Navigate to:
-   Computer Configuration → Administrative Templates → Google → Google Chrome.
-5. Configure policies such as:
-   - Set homepage URL.
-   - Disable password saving.
-   - Force SafeSearch.
-6. Apply policy and update:
-   gpupdate /force
+1. On your host desktop machine, download the latest Google Chrome Enterprise package:
+   https://chromeenterprise.google/browser/download/
+2. Extract the downloaded file. Inside, locate the GoogleChromeStandaloneEnterprise64.msi installer.
+3. Copy or drag the installer file into the Windows Server 2012 R2 virtual machine.
+4. On the server, open or create a shared software distribution folder:
+   Example: D:\Software\ChromeInstaller\
+   Place the Chrome .msi file there.
+5. Open Group Policy Management → Edit CSS Department GPO.
+6. Navigate to:
+   Computer Configuration → Policies → Software Settings → Software Installation.
+7. Right-click Software Installation → New → Package.
+8. In the dialog, enter the full UNC path to the shared MSI file:
+   \\SERVER\Software\ChromeInstaller\GoogleChromeStandaloneEnterprise64.msi
+9. Select “Assigned” as the deployment method and click OK.
+10. Close the Group Policy Editor and run on the client:
+    gpupdate /force
+11. Restart the Windows 10 client. Chrome will install automatically at startup.
 ```
 
 ---
@@ -268,7 +272,7 @@ This documentation provides a step-by-step guide to setting up a <b>Windows Serv
 | <b>Remote Desktop</b>     | Users can access each machine via RDP using domain credentials. |
 | <b>Backup</b>             | Backup completes successfully and restoration restores files.   |
 | <b>Wallpaper</b>          | All users display the configured wallpaper.                     |
-| <b>Chrome Policy</b>      | Browser settings reflect domain policies.                       |
+| <b>Chrome Deployment</b>  | Chrome installs automatically via Group Policy.                 |
 
 ---
 
@@ -280,15 +284,9 @@ You now have a fully functional <b>Windows Server 2012 R2</b> domain environment
 * Network Backup and Restore
 * Remote Desktop access
 * Wallpaper Policy deployment
-* Google Chrome enterprise policy enforcement
+* Google Chrome Enterprise deployment
 
 ---
 
-<b>Author:</b> Darl Ellison Floresca <b>Test Environment:</b> Windows Server 2012 R2 & Windows 10
-
-```
-
----
-
-Would you like me to slightly color the section titles (like `<span style="color:#2b6cb0;">## 11. Wallpaper Policy Deployment</span>`) for a more polished look without breaking GitHub Markdown rendering?
-```
+<b>Author:</b> Darl Ellison Floresca <b>
+Test Environment:</b> Windows Server 2012 R2 & Windows 10
